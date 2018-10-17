@@ -1,0 +1,6 @@
+[submodule "RenderIt-front"]
+	path = RenderIt-front
+	url = git@github.com:bogardt/RenderIt-front.git
+[submodule "RenderIt-back"]
+	path = RenderIt-back
+	url = git@github.com:bogardt/RenderIt-back.git
