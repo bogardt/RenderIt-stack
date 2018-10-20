@@ -7,7 +7,7 @@ services:
     depends_on:
       - "mongo"
     ports:
-      - "4000:4000"
+      - "3000:3000"
     volumes:
       - ./RenderIt-back:/usr/src/webapi
     network_mode: host
@@ -19,7 +19,7 @@ services:
     depends_on:
       - "mongo"
     ports:
-      - "3000:3000"
+      - "4000:4000"
     volumes:
       - ./RenderIt-front:/usr/src/website
     network_mode: host

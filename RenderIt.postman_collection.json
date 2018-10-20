@@ -21,7 +21,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\":\"toto7\",\n\t\"name\": \"bogard\",\n\t\"password\": \"toto\",\n\t\"email\":\"thom.thom@gmail.com\",\n\t\"role\": \"admin\"\n}"
+					"raw": "{\n\t\"username\":\"toto\",\n\t\"name\": \"tutu\",\n\t\"password\": \"pass\",\n\t\"email\":\"test@test.org\",\n\t\"role\": \"admin\"\n}"
 				},
 				"description": ""
 			},
@@ -42,7 +42,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:3000/api/users/login",
+				"url": "http://localhost:3000/api/auth/login",
 				"method": "POST",
 				"header": [
 					{
@@ -53,7 +53,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\t\"username\":\"toto4\",\n\t\"password\": \"toto\"\n}"
+					"raw": "{\n\t\"username\":\"test@test.org\",\n\t\"password\": \"pass\"\n}"
 				},
 				"description": ""
 			},
@@ -62,7 +62,7 @@
 		{
 			"name": "Me",
 			"request": {
-				"url": "http://localhost:3000/api/users/me",
+				"url": "http://localhost:3000/api/auth/me",
 				"method": "GET",
 				"header": [
 					{
