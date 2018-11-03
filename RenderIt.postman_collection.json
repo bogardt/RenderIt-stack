@@ -1,16 +1,20 @@
 {
+	"variables": [],
 	"info": {
-		"_postman_id": "009cd9ec-eee7-4e71-931d-26c2bf45bc17",
 		"name": "RenderIt",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "c8c28c0d-2b48-561f-719d-0938f79f29d9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "auth",
+			"description": "",
 			"item": [
 				{
 					"name": "Register",
 					"request": {
+						"url": "http://localhost:4000/api/users",
 						"method": "POST",
 						"header": [
 							{
@@ -22,18 +26,7 @@
 							"mode": "raw",
 							"raw": "{\n\t\"username\":\"toto\",\n\t\"name\": \"tutu\",\n\t\"password\": \"pass\",\n\t\"email\":\"test3@test.org\",\n\t\"role\": \"admin\"\n}"
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/users",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"users"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
@@ -43,16 +36,16 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "97d6e61c-4cc3-4c5a-8037-4baa70cf690a",
+								"type": "text/javascript",
 								"exec": [
 									"var jsonData = JSON.parse(responseBody);",
 									"postman.setGlobalVariable(\"render_it_bearer\", jsonData.bearer);"
-								],
-								"type": "text/javascript"
+								]
 							}
 						}
 					],
 					"request": {
+						"url": "http://localhost:4000/api/auth/login",
 						"method": "POST",
 						"header": [
 							{
@@ -64,25 +57,14 @@
 							"mode": "raw",
 							"raw": "{\n\t\"email\":\"test@test.org\",\n\t\"password\": \"pass\"\n}"
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/auth/login",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"auth",
-								"login"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Me",
 					"request": {
+						"url": "http://localhost:4000/api/auth/me",
 						"method": "GET",
 						"header": [
 							{
@@ -94,19 +76,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/auth/me",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"auth",
-								"me"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				}
@@ -114,10 +84,12 @@
 		},
 		{
 			"name": "room",
+			"description": "",
 			"item": [
 				{
 					"name": "Create room",
 					"request": {
+						"url": "http://localhost:4000/api/room",
 						"method": "POST",
 						"header": [
 							{
@@ -133,24 +105,14 @@
 							"mode": "raw",
 							"raw": "{\n\t\"name\":\"testx\"\n}"
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/room",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"room"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Get room",
 					"request": {
+						"url": "http://localhost:4000/api/room/testx",
 						"method": "GET",
 						"header": [
 							{
@@ -168,25 +130,39 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/room/testx",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"room",
-								"testx"
-							]
-						}
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Get rooms",
+					"request": {
+						"url": "http://localhost:4000/api/users/rooms",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{render_it_bearer}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Leave room",
 					"request": {
+						"url": "http://localhost:4000/api/room/testx/leave",
 						"method": "PUT",
 						"header": [
 							{
@@ -205,26 +181,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/room/testx/leave",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"room",
-								"testx",
-								"leave"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Join room",
 					"request": {
+						"url": "http://localhost:4000/api/room/testx/join/",
 						"method": "PUT",
 						"header": [
 							{
@@ -243,21 +207,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/room/testx/join/",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"room",
-								"testx",
-								"join",
-								""
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				}
@@ -265,10 +215,12 @@
 		},
 		{
 			"name": "users",
+			"description": "",
 			"item": [
 				{
 					"name": "Add friend",
 					"request": {
+						"url": "http://localhost:4000/api/users/friends",
 						"method": "POST",
 						"header": [
 							{
@@ -284,59 +236,39 @@
 							"mode": "raw",
 							"raw": "{\n    \"email\": \"test2@test.org\"\n}"
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/users/friends",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"users",
-								"friends"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Remove friend",
 					"request": {
-						"method": "PUT",
+						"url": "http://localhost:4000/api/users/friends/test@test.org",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer {{render_it_bearer}}"
+								"value": "Bearer {{render_it_bearer}}",
+								"description": ""
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"test@test.org\"\n}"
+							"raw": "{}"
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/users/friends",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"users",
-								"friends"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Get friends",
 					"request": {
+						"url": "http://localhost:4000/api/users/friends",
 						"method": "GET",
 						"header": [
 							{
@@ -352,25 +284,14 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/users/friends",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"users",
-								"friends"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
 					"name": "Get friend profile",
 					"request": {
+						"url": "http://localhost:4000/api/users/friends/test@test.org",
 						"method": "GET",
 						"header": [
 							{
@@ -386,56 +307,49 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/users/friends/test@test.org",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"users",
-								"friends",
-								"test@test.org"
-							]
-						}
+						"description": ""
 					},
 					"response": []
 				},
 				{
-					"name": "Get rooms",
+					"name": "Search friends",
 					"request": {
+						"url": "http://localhost:4000/api/users/friends/pattern/t",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "Bearer {{render_it_bearer}}",
-								"type": "text"
+								"description": ""
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/json",
-								"type": "text"
+								"description": ""
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "http://localhost:4000/api/users/rooms",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "4000",
-							"path": [
-								"api",
-								"users",
-								"rooms"
-							]
-						}
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "Search users",
+					"request": {
+						"url": "http://localhost:4000/api/users/pattern/te",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{render_it_bearer}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
 					},
 					"response": []
 				}
